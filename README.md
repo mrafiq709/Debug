@@ -11,8 +11,8 @@ Search for PHP_FPM_INSTALL_XDEBUG and replace the value with true
 Edit the xDebug configuration files:
 -------------------------------------
 ```
-nano workspace / xdebug.ini
-nano php-fpm / xdebug.ini
+nano workspace/xdebug.ini
+nano php-fpm/xdebug.ini
 ```
 Replace the contents of both files with:
 ```
@@ -24,7 +24,7 @@ xdebug.remote_autostart = 1
 xdebug.remote_enable = 1 
 xdebug.cli_color = 1 
 xdebug.profiler_enable = 1 
-xdebug.profiler_output_dir = "~ / xdebug / vscode / tmp / profiling"
+xdebug.profiler_output_dir = "~/xdebug/vscode/tmp/profiling"
 xdebug.remote_handler = dbgp 
 xdebug.remote_mode = req
 xdebug.var_display_max_children = -1 
