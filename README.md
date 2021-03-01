@@ -61,9 +61,14 @@ Start / Stop xDebug:
 -----------------------
 This is active to run on startup by default.
 To control the behavior of xDebug (in the php-fpm container), you can run the following commands from the Laradock root folder, (at the same prompt you run docker-compose):
-Stop xDebug from starting by default: ./php-fpm/xdebug stop.
-Start xDebug by default: ```./php-fpm/xdebug start.```
-See the status of xDebug: ```./php-fpm/xdebug status.```
+Stop xDebug from starting by default: 
+```./php-fpm/xdebug stop.
+```
+Start xDebug by default: 
+```./php-fpm/xdebug start.
+```
+See the status of xDebug: 
+```./php-fpm/xdebug status.```
 
 That's it, now you can start using xDebug in Visual Studio Code
 
