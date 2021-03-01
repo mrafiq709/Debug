@@ -1,0 +1,55 @@
+version: "3.7"
+
+#   pecl install xdebug && docker-php-ext-enable xdebug
+#   apt-get update && apt-get install -y nano netcat iputils-ping
+
+# zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20170718/xdebug.so
+
+
+services: 
+  ec2:
+    build: 
+      context: .
+      dockerfile: Dockerfile.ec2
+    container_name: ec2
+    ports: 
+      - 8888:80
+    volumes:
+      - ./ec2:/var/www/html
+    environment:
+      XDEBUG_CONFIG: client_host=192.168.32.1
+    networks: 
+      - eccube_net
+
+  # ec4: 
+  #   image: php:7.2-apache
+  #   container_name: ec4
+  #   ports: 
+  #   - 8899:80
+  #   volumes:
+  #     - ./ec4:/var/www/html
+  #   environment:
+  #     XDEBUG_CONFIG: remote_host=172.17.0.1
+
+  eccube_db: 
+    image: mariadb
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: eccube_db
+    ports: 
+      - 3377:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=eccube_db
+      - MYSQL_USER=root
+      - MYQSL_PASSWORD=123
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_ROOT_HOST=%
+
+networks:
+  eccube_net:
+    name: eccube_net
+    ipam:
+      driver: default
+      config: 
+        - subnet: "192.168.32.0/20"
